@@ -51,7 +51,7 @@ public class Pedido {
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<Item> itens;
+    private List<ItemPedido> itens;
 
     private String observacoes;
 

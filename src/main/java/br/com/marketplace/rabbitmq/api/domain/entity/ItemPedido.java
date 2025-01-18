@@ -15,18 +15,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tb_item")
+@Table(name = "tb_item_pedido")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name = "item", sequenceName = "sq_item", allocationSize = 1, initialValue = 1)
-public class Item {
+@SequenceGenerator(name = "item_pedido", sequenceName = "sq_item_pedido", allocationSize = 1, initialValue = 1)
+public class ItemPedido {
 
     @Id
-    @Column(name="cod_item")
-    @GeneratedValue(generator="item",strategy=GenerationType.SEQUENCE)
+    @Column(name="cod_item_pedido")
+    @GeneratedValue(generator="item_pedido",strategy=GenerationType.SEQUENCE)
     private Long codigo;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_pedido", nullable = false)
+    private Pedido pedido;
 
     @ManyToOne
     @JoinColumn(name = "cod_produto", nullable = false)
