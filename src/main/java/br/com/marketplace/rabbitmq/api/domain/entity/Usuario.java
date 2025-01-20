@@ -34,15 +34,17 @@ public class Usuario {
     private Long codigo;
 
     @Column(nullable = false)
-    private String login;
+    private String nome;
 
-    @Column(length = 12,nullable = false)
+    @Column(length = 14,nullable = false)
     private String cpf;
 
+    @Column(name = "data_criacao")
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
 
+    @Column(name = "data_ultima_atualizacao")
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataUltimaAtualiacao;

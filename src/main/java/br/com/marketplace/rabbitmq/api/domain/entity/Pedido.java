@@ -1,6 +1,5 @@
 package br.com.marketplace.rabbitmq.api.domain.entity;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -48,12 +47,12 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private StatusPedidoEnum status;
 
-    private BigDecimal total;
+    private double total;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens;
 
-    private String observacoes;
+    private String observacao;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

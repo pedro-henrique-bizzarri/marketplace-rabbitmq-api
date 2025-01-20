@@ -1,7 +1,5 @@
 package br.com.marketplace.rabbitmq.api.domain.entity;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,7 +33,7 @@ public class Produto {
     private String descricao;
 
     @Column(nullable = false)
-    private BigDecimal preco;
+    private double preco;
 
     @Column(nullable = false)
     private int estoque;

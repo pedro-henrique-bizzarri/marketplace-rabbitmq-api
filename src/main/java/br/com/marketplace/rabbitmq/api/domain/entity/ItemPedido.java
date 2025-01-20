@@ -38,4 +38,10 @@ public class ItemPedido {
 
     @Column(nullable = false)
     private int quantidade;
+
+    public ItemPedido(Long codigoProduto, int quantidade) {
+        this.produto = new Produto(codigoProduto, null, null, 0, 0);
+        this.quantidade = quantidade;
+    }
+
 }

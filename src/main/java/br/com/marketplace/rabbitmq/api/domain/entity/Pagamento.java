@@ -1,11 +1,13 @@
 package br.com.marketplace.rabbitmq.api.domain.entity;
 
-import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.marketplace.rabbitmq.api.domain.dto.ItemRequest;
 import br.com.marketplace.rabbitmq.api.domain.enums.MetodoPagamentoEnum;
 import br.com.marketplace.rabbitmq.api.domain.enums.StatusPagamentoEnum;
 import jakarta.persistence.Column;
@@ -41,19 +43,19 @@ public class Pagamento {
     private Long codigo;
 
     @Column(nullable = false)
-    private BigDecimal valor;
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataPagamento;
-
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private MetodoPagamentoEnum metodoPagamento;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusPagamentoEnum status;
+
+    @Column(nullable = false)
+    private double valor;
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataPagamento;
 
     @ManyToOne
     @JoinColumn(name = "cod_pedido", nullable = false)
@@ -70,4 +72,30 @@ public class Pagamento {
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataUltimaAtualizacao;
+
+    public Pagamento(MetodoPagamentoEnum metodoPagamento, long codigoUsuario, List<ItemRequest> items, String observacao) {
+        this.metodoPagamento = metodoPagamento;
+        this.pedido = new Pedido(
+            null, 
+            null, 
+            null, 
+            0, 
+            items
+                .stream()
+                .map(item -> new ItemPedido(
+                    item.codigoProduto(), 
+                    item.quantidade()))
+                .collect(Collectors.toList()), 
+            observacao, 
+            dataCriacao, 
+            dataUltimaAtualizacao);
+
+        this.usuario = new Usuario(
+            codigoUsuario, 
+            null, 
+            null, 
+            null, 
+            null);
+    }
+
 }
