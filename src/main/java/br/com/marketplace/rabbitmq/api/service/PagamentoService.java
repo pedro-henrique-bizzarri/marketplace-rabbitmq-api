@@ -7,10 +7,14 @@ import org.springframework.stereotype.Service;
 
 import br.com.marketplace.rabbitmq.api.domain.entity.Pagamento;
 import br.com.marketplace.rabbitmq.api.domain.enums.StatusPagamentoEnum;
+import br.com.marketplace.rabbitmq.api.rabbitmq.PagamentoProducer;
 import br.com.marketplace.rabbitmq.api.repository.PagamentoRepository;
 
 @Service
 public class PagamentoService {
+
+    @Autowired
+    private PagamentoProducer pagamentoProducer;
 
     @Autowired
     private PagamentoRepository pagamentoRepository;
@@ -21,9 +25,9 @@ public class PagamentoService {
         pagamento.setDataPagamento(new Date());
         Pagamento realizado = pagamentoRepository.save(pagamento);
 
+        pagamentoProducer.enviarFilaPagamento(pagamento);
+
         return realizado;
     }
-
-    
 
 }
