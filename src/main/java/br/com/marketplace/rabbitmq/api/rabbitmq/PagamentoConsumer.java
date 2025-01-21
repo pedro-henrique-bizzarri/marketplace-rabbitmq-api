@@ -28,9 +28,9 @@ public class PagamentoConsumer {
         Pagamento pagamentoAlterado = pagamentoService.atualizarPagamentoProcessado(pagamentoProcessado.getCodigoPagamento(), pagamentoProcessado.getStatus());
 
         System.out.println(
-            RabbitMQConstants.getDataHoraAtualSistema() + "\nO sistema alterou o status do pedido " + 
-                pagamentoProcessado.getCodigoPagamento() + " para " + 
-                pagamentoAlterado.getPedido().getStatus().toString() + "\n");    
+            "\n" + RabbitMQConstants.getDataHoraAtualSistema() + " O sistema alterou o status do pedido " + 
+                        pagamentoProcessado.getCodigoPagamento() + " para " + 
+                        pagamentoAlterado.getPedido().getStatus().toString() + "\n");    
     }
 
 }
