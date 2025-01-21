@@ -1,12 +1,10 @@
 package br.com.marketplace.rabbitmq.api.service;
 
 import java.util.Date;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.marketplace.rabbitmq.api.domain.dto.PagamentoProcessadoRequest;
 import br.com.marketplace.rabbitmq.api.domain.entity.Pagamento;
 import br.com.marketplace.rabbitmq.api.domain.enums.StatusPagamentoEnum;
 import br.com.marketplace.rabbitmq.api.domain.enums.StatusPagamentoProcessadoEnum;
