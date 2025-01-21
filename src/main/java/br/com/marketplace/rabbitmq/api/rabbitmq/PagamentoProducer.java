@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import br.com.marketplace.rabbitmq.api.domain.dto.PagamentoRequest;
+import br.com.marketplace.rabbitmq.api.domain.dto.PagamentoQueueRequest;
 import br.com.marketplace.rabbitmq.api.domain.entity.Pagamento;
 
 @Component
@@ -19,6 +19,6 @@ public class PagamentoProducer {
     public void enviarFilaPagamento(Pagamento pagamento){
         rabbitTemplate.convertAndSend(
             RabbitMQConstants.QUEUE_PAYMENT,
-            new Gson().toJson(new PagamentoRequest(pagamento)));
+            new Gson().toJson(new PagamentoQueueRequest(pagamento)));
     }
 }
