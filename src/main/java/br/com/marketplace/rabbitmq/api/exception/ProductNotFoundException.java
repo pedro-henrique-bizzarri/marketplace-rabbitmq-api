@@ -3,10 +3,10 @@ package br.com.marketplace.rabbitmq.api.exception;
 public class ProductNotFoundException extends RuntimeException{
 
     public ProductNotFoundException(){
-        super("Produto não encontrado !");
+        super("Nenhum produto não encontrado !");
     }
 
-    public ProductNotFoundException(String var, String msg, Throwable cause){
-        super(msg, cause);
+    public ProductNotFoundException(String msg){
+        super(msg);
     }
 }

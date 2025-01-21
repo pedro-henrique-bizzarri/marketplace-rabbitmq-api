@@ -3,10 +3,10 @@ package br.com.marketplace.rabbitmq.api.exception;
 public class PaymentNotFoundException extends RuntimeException{
 
     public PaymentNotFoundException(){
-        super("Pagamento não encontrado !");
+        super("Nenhum pagamento encontrado !");
     }
 
-    public PaymentNotFoundException(String var, String msg, Throwable cause){
-        super(msg, cause);
+    public PaymentNotFoundException(String msg){
+        super(msg);
     }
 }

@@ -52,5 +52,5 @@ public class CustomExceptionHandler {
         errorMessage.setMessage(exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
     }
-
+    
  }

@@ -21,7 +21,7 @@ public class PagamentoProducer {
         rabbitTemplate.convertAndSend(RabbitMQConstants.QUEUE_PAYMENT, json);
             
         System.out.println(
-            "\nO sistema enviou uma mensagem para o RabbitMQ, fila: " + RabbitMQConstants.QUEUE_PAYMENT +
-            "\nPagamento: " + json);
+            "\n" + RabbitMQConstants.getDataHoraAtualSistema() + " O sistema enviou uma mensagem para o RabbitMQ, fila: " + RabbitMQConstants.QUEUE_PAYMENT +
+            "\n" + RabbitMQConstants.getDataHoraAtualSistema() + " Pagamento: " + json + "\n");
     }
 }
