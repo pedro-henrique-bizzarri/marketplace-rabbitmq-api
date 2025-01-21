@@ -10,10 +10,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import br.com.marketplace.rabbitmq.api.domain.dto.ItemRequest;
 import br.com.marketplace.rabbitmq.api.domain.enums.MetodoPagamentoEnum;
 import br.com.marketplace.rabbitmq.api.domain.enums.StatusPagamentoEnum;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -57,11 +59,11 @@ public class Pagamento {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataPagamento;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_pedido", nullable = false)
     private Pedido pedido;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_usuario", nullable = false)
     private Usuario usuario;
 
