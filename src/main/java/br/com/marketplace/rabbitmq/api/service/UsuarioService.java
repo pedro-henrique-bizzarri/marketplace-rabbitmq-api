@@ -1,5 +1,7 @@
 package br.com.marketplace.rabbitmq.api.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,14 @@ public class UsuarioService {
     public Usuario pesquisarPorCodigo(Long codigo){
         return usuarioRepository.findByCodigo(codigo)
             .orElseThrow(UserNotFoundException::new);
+    }
+
+    public List<Usuario> listar(){
+        List<Usuario> usuarios = usuarioRepository.findAll();
+
+        if(usuarios.isEmpty())
+            throw new UserNotFoundException();
+       
+        return usuarios;
     }
 }
